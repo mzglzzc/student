@@ -15,9 +15,9 @@
 		<div class="easyui-accordion" data-options="multiple:true" >
 	        <div title="Language">
 	            <ul>
-	            	<li><a onclick="addTab('add1','t1.jsp')">add1</a></li>
-	            	<li><a onclick="addTab('add2','t2.jsp')">add2</a></li>
-	            	<li><a onclick="addTab('add3','t1.jsp')">add3</a></li>
+	            	<li><a onclick="addTab('add1','/student/t1')">add1</a></li>
+	            	<li><a onclick="addTab('add2','/student/t2')">add2</a></li>
+	            	<li><a onclick="addTab('add3','/student/t1')">add3</a></li>
 	            </ul>
 	        </div>
 	        <div title="Java">
@@ -40,7 +40,7 @@
 	            lalalalala
 	        </div>
 	        <div title="Help" data-options="iconCls:'icon-help',closable:true">
-	            <iframe scrolling="auto" frameborder="0"  src="t2.jsp" style="width:100%;height:100%;"></iframe>
+	            <iframe scrolling="auto" frameborder="0"  src="/student/t2" style="width:100%;height:100%;"></iframe>
 	        </div>
 	    </div>
 	</div>
