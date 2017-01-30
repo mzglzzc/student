@@ -12,6 +12,14 @@ public class HomeController {
 	
 	@Get("")
 	public String index(Invocation inv) {
-		return "home";
+		return "index";
+	}
+	@Get("/t1")
+	public String test(Invocation inv) {
+		return "test";
+	}
+	@Get("/t2")
+	public String test2(Invocation inv) {
+		return "test2";
 	}
 }

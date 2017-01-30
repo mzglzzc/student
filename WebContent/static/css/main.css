@@ -1,0 +1,5 @@
+body{margin:0;padding:0;}
+.head{height:160px;background-color:#E0ECFF}
+.left{width:200px;position:fixed;top:160px;bottom:0;background-color:#E0ECFF;}
+.right{margin-left:200px;}
+#content .tabs-panels{border-width:0}
