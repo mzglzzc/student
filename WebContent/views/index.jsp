@@ -18,7 +18,7 @@
 	        <div title="Language">
 	            <ul>
 	            	<li><a onclick="addTab('add1','/student/stuList')">列表</a></li>
-	            	<li><a onclick="addTab('add2','/student/t2')">add2</a></li>
+	            	<li><a onclick="addTab('add2','/student/institute/getAll')">add2</a></li>
 	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">add3</a></li>
 	            </ul>
 	        </div>
