@@ -14,9 +14,9 @@ public class HomeController {
 	public String index(Invocation inv) {
 		return "index";
 	}
-	@Get("/t1")
+	@Get("/stuList")
 	public String test(Invocation inv) {
-		return "test";
+		return "stuList";
 	}
 	@Get("/t2")
 	public String test2(Invocation inv) {

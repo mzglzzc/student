@@ -7,16 +7,17 @@
     <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="/student/static/css/main.css">
+    <%@include file="common.jsp"%>
 </head>
 <body class="easyui-layout">
     <div region="north" style="height:160px;">
 		<h1>学生管理系统</h1>
 	</div>
-	<div data-options="region:'west',split:true,title:'Navigator'" style="width:180px;">
+	<div data-options="region:'west',title:'Navigator'" style="width:180px;">
 		<div class="easyui-accordion" data-options="multiple:true" >
 	        <div title="Language">
 	            <ul>
-	            	<li><a onclick="addTab('add1','/student/t1')">add1</a></li>
+	            	<li><a onclick="addTab('add1','/student/stuList')">列表</a></li>
 	            	<li><a onclick="addTab('add2','/student/t2')">add2</a></li>
 	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">add3</a></li>
 	            </ul>
@@ -37,12 +38,7 @@
 	</div>
 	<div id="content" region="center">
 		<div class="easyui-tabs" plain="true" id="tab1">
-	        <div title="About" data-options="closable:true">
-	            lalalalala
-	        </div>
-	        <div title="Help" data-options="iconCls:'icon-help',closable:true">
-	            <iframe scrolling="auto" frameborder="0"  src="/student/t2" style="width:100%;height:100%;"></iframe>
-	        </div>
+	       
 	    </div>
 	</div>
     <script type="text/javascript" src="/student/static/jquery-easyui-1.5.1/jquery.min.js"></script>
