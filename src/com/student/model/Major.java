@@ -6,22 +6,25 @@ import java.util.Date;
 /**
  * 班级
  */
-public class Classes implements Serializable {
-
-	private static final long serialVersionUID = 3428461634315833792L;
-
+public class Major implements Serializable {
+	
+	private static final long serialVersionUID = 3829460016585613099L;
 	/**
 	 * 主键ID
 	 */
 	private long id;
 	/**
+	 * 学院ID
+	 */
+	private long instituteid;
+	/**
 	 * 班级名称
 	 */
 	private String name;
 	/**
-	 * 专业ID
+	 * 序号
 	 */
-	private long majorid;
+	private int seq;
 	/**
 	 * 创建时间
 	 */
@@ -39,11 +42,17 @@ public class Classes implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public long getMajorid() {
-		return majorid;
+	public long getInstituteid() {
+		return instituteid;
 	}
-	public void setMajorid(long majorid) {
-		this.majorid = majorid;
+	public void setInstituteid(long instituteid) {
+		this.instituteid = instituteid;
+	}
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 	public Date getCtime() {
 		return ctime;

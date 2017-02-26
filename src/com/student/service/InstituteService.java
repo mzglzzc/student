@@ -14,6 +14,14 @@ public class InstituteService {
 	private InstituteDAO instituteDAO;
 	
 	/**
+	 * 新增学院
+	 * @return
+	 */
+	public long add(String name){
+		return instituteDAO.addInstitute(name);
+	}
+	
+	/**
 	 * 获取全部学院
 	 * @return
 	 */

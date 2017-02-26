@@ -4,18 +4,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 学生
+ * 教师
  */
-public class Student implements Serializable {
-
-	private static final long serialVersionUID = -4492412758881190961L;
+public class Teacher implements Serializable {
 	
+	private static final long serialVersionUID = 3420247714414233999L;
 	/**
 	 * 主键ID
 	 */
 	private long id;
 	/**
-	 * 学号
+	 * 工号
 	 */
 	private long uid;
 	/**
@@ -47,13 +46,13 @@ public class Student implements Serializable {
 	 */
 	private String address;
 	/**
-	 * 入学时间
+	 * 入职时间
 	 */
 	private Date entry_time;
 	/**
 	 * 班级ID
 	 */
-	private long classesid;
+	private long majorid;
 	/**
 	 * 创建时间
 	 */
@@ -119,11 +118,11 @@ public class Student implements Serializable {
 	public void setEntry_time(Date entry_time) {
 		this.entry_time = entry_time;
 	}
-	public long getClassesid() {
-		return classesid;
+	public long getMajorid() {
+		return majorid;
 	}
-	public void setClassesid(long classesid) {
-		this.classesid = classesid;
+	public void setMajorid(long majorid) {
+		this.majorid = majorid;
 	}
 	public Date getCtime() {
 		return ctime;

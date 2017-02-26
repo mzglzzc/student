@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Basic Tabs - jQuery EasyUI Demo</title>
-    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5.1/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.5.1/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/student/static/css/main.css">
 </head>
 <body class="easyui-layout">
     <div region="north" style="height:160px;">
-		<h1>标题</h1>
+		<h1>111标题</h1>
 	</div>
 	<div data-options="region:'west',split:true,title:'Navigator'" style="width:180px;">
 		<div class="easyui-accordion" data-options="multiple:true" >
@@ -44,8 +45,8 @@
 	        </div>
 	    </div>
 	</div>
-    <script type="text/javascript" src="/static/jquery-easyui-1.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/student/static/jquery-easyui-1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/student/static/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
     <script>
     	function addTab(title, url){
     		if ($('#tab1').tabs('exists', title)){

@@ -62,5 +62,4 @@ public interface InstituteDAO {
 	@SQL("select id, name, ctime from institute where name=:name")
 	public Institute getByName(@SQLParam("name") String name);
 	
-	public List<Institute> getByCtime();
 }
