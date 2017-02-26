@@ -26,8 +26,8 @@ public interface InstituteDAO {
 	 * 删除学院
 	 * @param id 学院ID
 	 */
-	@SQL("delete from institute where id=:id")
-	public void delInstitute(@SQLParam("id") long id);
+	@SQL("delete from institute where id in (:ids)")
+	public void delInstitute(@SQLParam("ids") long[] ids);
 	/**
 	 * 根据学院ID更新学院名称
 	 * @param ins 学院对象

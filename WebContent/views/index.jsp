@@ -3,14 +3,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Basic Tabs - jQuery EasyUI Demo</title>
+    <title>学生管理系统</title>
     <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="/student/static/css/main.css">
 </head>
 <body class="easyui-layout">
     <div region="north" style="height:160px;">
-		<h1>111标题</h1>
+		<h1>学生管理系统</h1>
 	</div>
 	<div data-options="region:'west',split:true,title:'Navigator'" style="width:180px;">
 		<div class="easyui-accordion" data-options="multiple:true" >
@@ -18,7 +18,7 @@
 	            <ul>
 	            	<li><a onclick="addTab('add1','/student/t1')">add1</a></li>
 	            	<li><a onclick="addTab('add2','/student/t2')">add2</a></li>
-	            	<li><a onclick="addTab('add3','/student/t1')">add3</a></li>
+	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">add3</a></li>
 	            </ul>
 	        </div>
 	        <div title="Java">

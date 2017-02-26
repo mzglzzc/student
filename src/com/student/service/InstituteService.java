@@ -28,4 +28,8 @@ public class InstituteService {
 	public List<Institute> getAll(){
 		return instituteDAO.getAll();
 	}
+	
+	public void del(long[] ids){
+		instituteDAO.delInstitute(ids);
+	}
 }
