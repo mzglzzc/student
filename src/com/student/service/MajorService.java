@@ -6,35 +6,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.student.dao.InstituteDAO;
+import com.student.dao.MajorDAO;
 import com.student.model.Institute;
 import com.student.model.Major;
 
 @Service
-public class InstituteService {
+public class MajorService {
 	@Autowired
-	private InstituteDAO instituteDAO;
+	private MajorDAO majorDAO;
 	
 	/**
-	 * 新增学院
+	 * 新增专业
 	 * @return
 	 */
 	public long add(String name){
-		return instituteDAO.addInstitute(name);
+		return majorDAO.add(name);
 	}
 	
 	/**
-	 * 获取全部学院
+	 * 获取全部专业
 	 * @return
 	 */
-	public List<Institute> getAll(){
-		return instituteDAO.getAll();
+	public List<Major> getAll(){
+		return majorDAO.getAll();
 	}
 	
+	/**
+	 * 删除专业
+	 * @param ids
+	 */
 	public void del(long[] ids){
-		instituteDAO.delInstitute(ids);
+		majorDAO.del(ids);
 	}
 	
-	public List<Institute> getByCondition(long[] ids, String name){
-		return instituteDAO.getByCondition(ids, name);
+	
+	public List<Major> getByCondition(long[] ids, String name){
+		return majorDAO.getByCondition(ids, name);
 	}
 }

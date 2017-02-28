@@ -3,6 +3,7 @@ package com.student.dao;
 import java.util.List;
 
 import com.student.model.Institute;
+import com.student.model.Major;
 
 import net.paoding.rose.jade.annotation.DAO;
 import net.paoding.rose.jade.annotation.ReturnGeneratedKeys;
@@ -61,5 +62,14 @@ public interface InstituteDAO {
 	 */
 	@SQL("select id, name, ctime from institute where name=:name")
 	public Institute getByName(@SQLParam("name") String name);
+	/**
+	 * 根据指定条件查询学院
+	 * @param name 学院名称
+	 * @return
+	 */
+	@SQL("select id,name,ctime from institute where 1=1 "
+			+ "#if(:ids!=null&&:ids.size()>0){and id in (:ids) } "
+			+ "#if(:name!=null&&:name.length()>0){and name like :name } ")
+	public List<Institute> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name);
 	
 }

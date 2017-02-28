@@ -10,7 +10,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.student.model.Institute;
+import com.student.model.Major;
 import com.student.service.InstituteService;
+import com.student.service.MajorService;
 
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
@@ -19,12 +21,12 @@ import net.paoding.rose.web.annotation.rest.Get;
 import net.paoding.rose.web.annotation.rest.Post;
 import net.paoding.rose.web.var.Model;
 
-@Path("institute")
-public class InstituteController {
-	final static Logger logger = Logger.getLogger(InstituteController.class.getName());
+@Path("major")
+public class MajorController {
+	final static Logger logger = Logger.getLogger(MajorController.class.getName());
 	
 	@Autowired
-	private InstituteService instituteService;
+	private MajorService majorService;
 	
 	@Get("getAdd")
 	public String getAdd(){
@@ -33,7 +35,7 @@ public class InstituteController {
 	
 	@Get("getList")
 	public String getList(){
-		return "institute/list";
+		return "majorList";
 	}
 	
 	@Get("add")
@@ -41,29 +43,25 @@ public class InstituteController {
 		if(StringUtils.isEmpty(name)){
 			return "error";
 		}
-		instituteService.add(name);
-		return "r:getList";
+		majorService.add(name);
+		return "home";
 	}
 	
 	@Post("getAll")
 	public String getAllInstitute(Invocation inv, Model model){
-		List<Institute> list = instituteService.getAll();
+		List<Major> list = majorService.getAll();
 		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
 		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
 	}
 	
 	public String delInstitute(Invocation inv, @Param("ids")long[] ids){
-		instituteService.del(ids);
+		majorService.del(ids);
 		return "";
 	}
 	
 	@Get("getByCondition")
 	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name){
-		if(name!=null && name.trim().length()>0){
-			name = "%" + name + "%";
-		}
-		List<Institute> list = instituteService.getByCondition(ids,name);
-		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
-		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
+		majorService.getByCondition(ids,name);
+		return "";
 	}
 }

@@ -62,5 +62,12 @@ public interface MajorDAO {
 	 */
 	@SQL("select id, name, ctime from institute where name like :name")
 	public Major getByName(@SQLParam("name") String name);
+	/**
+	 * 根据指定条件查询专业
+	 * @param name 专业名称
+	 * @return
+	 */
+	@SQL("select id,instituteid,name,ctime from major where 1=1 #if(:ids!=null&&:ids.size()>0){and id in (:ids)}")
+	public List<Major> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name);
 	
 }
