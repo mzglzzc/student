@@ -18,8 +18,8 @@ public class HomeController {
 	public String test(Invocation inv) {
 		return "stuList";
 	}
-	@Get("/t2")
+	@Get("/stuAdd")
 	public String test2(Invocation inv) {
-		return "test2";
+		return "stuAdd";
 	}
 }
