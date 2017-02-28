@@ -30,6 +30,11 @@ public class InstituteController {
 		return "institute/add";
 	}
 	
+	@Get("getList")
+	public String getList(){
+		return "institute/list";
+	}
+	
 	@Get("add")
 	public String addInstitute(Invocation inv, @Param("name")String name) {
 		if(StringUtils.isEmpty(name)){

@@ -15,9 +15,9 @@
 	</div>
 	<div data-options="region:'west',title:'Navigator'" style="width:180px;">
 		<div class="easyui-accordion" data-options="multiple:true" >
-	        <div title="Language">
+	        <div title="系统管理">
 	            <ul>
-	            	<li><a onclick="addTab('add1','/student/stuList')">列表</a></li>
+	            	<li><a onclick="addTab('add1','/student/institute/getList')">学院管理</a></li>
 	            	<li><a onclick="addTab('add2','/student/institute/getAll')">add2</a></li>
 	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">add3</a></li>
 	            </ul>
