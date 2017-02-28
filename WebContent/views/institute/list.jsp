@@ -17,12 +17,35 @@
 		</thead>
 	</table>
 	<div id="tb">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-			onclick="javascript:alert('Add')">添加</a> 
+		<a id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+		<form action="" style="display:inline-block">
+			<span>ID:</span>
+			<input name="id" style="line-height:26px;border:1px solid #ccc">
+			<span>学院名称:</span>
+			<input name="searchname" style="line-height:26px;border:1px solid #ccc">
+			<button type="submit" class="easyui-linkbutton" plain="true" >搜索</button>
+		</form>
+		
 	</div>
+	<div id="win" class="easyui-window" title="新增" closed="true" style="width:300px;">
+		<form style="padding:10px 20px 10px 40px;" action="/student/institute/add" method="get">
+			<p>学院名称: <input name="name" type="text"></p>
+			<div style="padding:5px;text-align:center;">
+				<button type="submit" class="easyui-linkbutton" icon="icon-ok">Ok</button>
+				<a id="cancelBtn" href="#" class="easyui-linkbutton" icon="icon-cancel">Cancel</a>
+			</div>
+		</form>
+	</div>Í
 	
-	
-   <script type="text/javascript" src="/student/static/jquery-easyui-1.5.1/jquery.min.js"></script>
-   <script type="text/javascript" src="/student/static/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+	<%@include file="/views/include/comjs.jsp"%>
+   <script>
+	   $('#addBtn').click(function(){
+		   $('#win').window('open');
+	   })
+	   $('#cancelBtn').click(function(){
+		   $('#insName').val('');
+		   $('#win').window('close');
+	   })
+   </script>
 </body>
 </html>

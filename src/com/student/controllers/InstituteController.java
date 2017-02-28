@@ -42,7 +42,7 @@ public class InstituteController {
 			return "error";
 		}
 		instituteService.add(name);
-		return "home";
+		return "r:getList";
 	}
 	
 	@Post("getAll")
