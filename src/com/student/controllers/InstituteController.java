@@ -16,6 +16,7 @@ import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
+import net.paoding.rose.web.annotation.rest.Post;
 import net.paoding.rose.web.var.Model;
 
 @Path("institute")
@@ -44,11 +45,16 @@ public class InstituteController {
 		return "home";
 	}
 	
-	@Get("getAll")
+	@Post("getAll")
 	public String getAllInstitute(Invocation inv, Model model){
 		List<Institute> list = instituteService.getAll();
+<<<<<<< Updated upstream
 		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
 		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
+=======
+		model.add("list", list);
+		return "institute/list";
+>>>>>>> Stashed changes
 	}
 	
 	public String delInstitute(Invocation inv, @Param("ids")long[] ids){

@@ -8,19 +8,17 @@
 <%@include file="common.jsp"%>
 </head>
 <body>
-	<table id="tt" class="easyui-datagrid" iconCls="icon-save" toolbar="#tb">
+	<table id="tt" class="easyui-datagrid" iconCls="icon-save" toolbar="#tb" url="institute/getAll">
 		<thead>
 			<tr>
-				<th field="itemid">姓名</th>
-				<th field="productid">性别</th>
-				<th field="listprice">年龄</th>
-				<th field="unitcost">班级</th>
+				<th field="id">ID</th>
+				<th field="name">姓名</th>
+				<th field="ctime">入学时间</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="tb">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-			onclick="javascript:alert('Add')">Add</a> 
+		<a href="stuAdd" class="easyui-linkbutton" iconCls="icon-add" plain="true">Add</a> 
 	</div>
 	
 	
