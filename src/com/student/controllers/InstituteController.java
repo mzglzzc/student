@@ -48,13 +48,8 @@ public class InstituteController {
 	@Post("getAll")
 	public String getAllInstitute(Invocation inv, Model model){
 		List<Institute> list = instituteService.getAll();
-<<<<<<< Updated upstream
 		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
 		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
-=======
-		model.add("list", list);
-		return "institute/list";
->>>>>>> Stashed changes
 	}
 	
 	public String delInstitute(Invocation inv, @Param("ids")long[] ids){

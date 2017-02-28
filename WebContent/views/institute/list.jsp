@@ -4,22 +4,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>student list</title>
-<%@include file="common.jsp"%>
+<%@include file="/views/include/common.jsp"%>
 </head>
 <body>
-	<table id="tt" class="easyui-datagrid" iconCls="icon-save" toolbar="#tb">
+	<table id="tt" class="easyui-datagrid" style="" iconCls="icon-save" toolbar="#tb" url="getAll" pagination="true" rownumbers="true">
 		<thead>
 			<tr>
-				<th field="itemid">姓名</th>
-				<th field="productid">性别</th>
-				<th field="listprice">年龄</th>
-				<th field="unitcost">班级</th>
+				<th field="id">ID</th>
+				<th field="name">学院名称</th>
+				<th field="ctime">创建时间</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="tb">
 		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-			onclick="javascript:alert('Add')">Add</a> 
+			onclick="javascript:alert('Add')">添加</a> 
 	</div>
 	
 	

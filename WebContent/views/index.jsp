@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="/student/static/css/main.css">
-    <%@include file="common.jsp"%>
+    <%@include file="/views/include/common.jsp"%>
 </head>
 <body class="easyui-layout">
     <div region="north" style="height:160px;">
@@ -15,15 +15,18 @@
 	</div>
 	<div data-options="region:'west',title:'Navigator'" style="width:180px;">
 		<div class="easyui-accordion" data-options="multiple:true" >
+	        <div title="基础信息">
+	            <ul>
+	            	<li><a onclick="addTab('add1','/student/institute/getList')">个人信息</a></li>
+	            </ul>
+	        </div>
 	        <div title="系统管理">
 	            <ul>
 	            	<li><a onclick="addTab('add1','/student/institute/getList')">学院管理</a></li>
-	            	<li><a onclick="addTab('add2','/student/institute/getAll')">add2</a></li>
-	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">add3</a></li>
+	            	<li><a onclick="addTab('add2','/student/institute/getAll')">专业管理</a></li>
+	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">班级管理</a></li>
+	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">学生管理</a></li>
 	            </ul>
-	        </div>
-	        <div title="Java">
-	            <p>Java (Indonesian: Jawa) is an island of Indonesia. With a population of 135 million (excluding the 3.6 million on the island of Madura which is administered as part of the provinces of Java), Java is the world's most populous island, and one of the most densely populated places in the world.</p>
 	        </div>
 	        <div title="C#">
 	            <p>C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.</p>
