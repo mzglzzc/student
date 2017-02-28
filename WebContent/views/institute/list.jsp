@@ -7,7 +7,8 @@
 <%@include file="/views/include/common.jsp"%>
 </head>
 <body>
-	<table id="tt" class="easyui-datagrid" style="" iconCls="icon-save" toolbar="#tb" url="getAll" pagination="true" rownumbers="true">
+	<table id="tt" class="easyui-datagrid" style="" iconCls="icon-save" 
+		toolbar="#tb" url="/student/institute/getByCondition" pagination="true" rownumbers="true" method="get">
 		<thead>
 			<tr>
 				<th field="id">ID</th>
@@ -18,13 +19,13 @@
 	</table>
 	<div id="tb">
 		<a id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
-		<form action="" style="display:inline-block">
+		<div style="display:inline-block">
 			<span>ID:</span>
-			<input name="id" style="line-height:26px;border:1px solid #ccc">
+			<input id="id" name="id" style="line-height:26px;border:1px solid #ccc">
 			<span>学院名称:</span>
-			<input name="searchname" style="line-height:26px;border:1px solid #ccc">
-			<button type="submit" class="easyui-linkbutton" plain="true" >搜索</button>
-		</form>
+			<input id="searchname" name="searchname" style="line-height:26px;border:1px solid #ccc">
+			<a class="easyui-linkbutton" plain="true" onclick="doSearch()">搜索</a>
+		</div>
 		
 	</div>
 	<div id="win" class="easyui-window" title="新增" closed="true" style="width:300px;">
@@ -35,7 +36,7 @@
 				<a id="cancelBtn" href="#" class="easyui-linkbutton" icon="icon-cancel">Cancel</a>
 			</div>
 		</form>
-	</div>Í
+	</div>
 	
 	<%@include file="/views/include/comjs.jsp"%>
    <script>
@@ -46,6 +47,12 @@
 		   $('#insName').val('');
 		   $('#win').window('close');
 	   })
+		function doSearch(){
+			$('#tt').datagrid('load',{
+				ids: $('#id').val(),
+				name: $('#searchname').val()
+			});
+		}
    </script>
 </body>
 </html>

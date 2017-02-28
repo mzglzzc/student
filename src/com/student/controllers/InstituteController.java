@@ -26,14 +26,19 @@ public class InstituteController {
 	@Autowired
 	private InstituteService instituteService;
 	
-	@Get("getAdd")
-	public String getAdd(){
-		return "institute/add";
-	}
-	
 	@Get("getList")
 	public String getList(){
 		return "institute/list";
+	}
+	
+	@Get("getByCondition")
+	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name){
+		if(name!=null && name.trim().length()>0){
+			name = "%" + name + "%";
+		}
+		List<Institute> list = instituteService.getByCondition(ids,name);
+		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
+		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
 	}
 	
 	@Get("add")
@@ -45,25 +50,9 @@ public class InstituteController {
 		return "r:getList";
 	}
 	
-	@Post("getAll")
-	public String getAllInstitute(Invocation inv, Model model){
-		List<Institute> list = instituteService.getAll();
-		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
-		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
-	}
-	
+	@Get("del")
 	public String delInstitute(Invocation inv, @Param("ids")long[] ids){
 		instituteService.del(ids);
-		return "";
-	}
-	
-	@Get("getByCondition")
-	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name){
-		if(name!=null && name.trim().length()>0){
-			name = "%" + name + "%";
-		}
-		List<Institute> list = instituteService.getByCondition(ids,name);
-		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
-		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
+		return "r:getList";
 	}
 }
