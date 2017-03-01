@@ -4,14 +4,20 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>学生管理系统</title>
-    <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/student/static/jquery-easyui-1.5.1/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="/student/static/css/main.css">
     <%@include file="/views/include/common.jsp"%>
+<link rel="stylesheet" href="/student/static/font-awesome/css/font-awesome.min.css">
+    <style>
+	   .hback{background-color:#6599DC}
+	   #cloud1{color:#fff;font-size:6em;position:fixed;right:100px;top:20px}
+	   #cloud2{color:#fff;font-size:5em;position:fixed;right:200px;top:50px}
+	   #th1{color:#fff;margin:40px 30px;}
+    </style>
 </head>
 <body class="easyui-layout">
-    <div region="north" style="height:160px;">
-		<h1>学生管理系统</h1>
+    <div region="north" style="height:160px;" class="hback">
+    	<i class="icon-cloud" id="cloud1"></i>
+    	<i class="icon-cloud" id="cloud2"></i>
+		<h1 id="th1">学生管理系统</h1>
 	</div>
 	<div data-options="region:'west',title:'Navigator'" style="width:180px;">
 		<div class="easyui-accordion" data-options="multiple:true" >

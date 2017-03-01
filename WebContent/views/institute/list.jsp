@@ -19,6 +19,7 @@
 	</table>
 	<div id="tb">
 		<a id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+		<a id="delBtn" class="easyui-linkbutton" iconCls="icon-cut" plain="true" >删除</a>
 		<div style="display:inline-block">
 			<span>ID:</span>
 			<input id="id" name="id" style="line-height:26px;border:1px solid #ccc">
@@ -43,6 +44,15 @@
 	   $('#addBtn').click(function(){
 		   $('#win').window('open');
 	   })
+	   $('#delBtn').click(function(){
+		   var ids = [];
+			var rows = $('#tt').datagrid('getSelections');
+			for(var i=0; i<rows.length; i++){
+				ids.push(rows[i].id);
+			}
+		   location.href="/del?ids="+ids.join();
+	   })
+	   
 	   $('#cancelBtn').click(function(){
 		   $('#insName').val('');
 		   $('#win').window('close');

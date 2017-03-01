@@ -14,4 +14,9 @@ public class HomeController {
 	public String index(Invocation inv) {
 		return "index";
 	}
+
+	@Get("/login")
+	public String test(Invocation inv) {
+		return "login";
+	}
 }
