@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.student.dao.InstituteDAO;
 import com.student.model.Institute;
-import com.student.model.Major;
 
 @Service
 public class InstituteService {
@@ -30,10 +29,20 @@ public class InstituteService {
 		return instituteDAO.getAll();
 	}
 	
+	/**
+	 * 根据ID删除学院
+	 * @param ids
+	 */
 	public void del(long[] ids){
 		instituteDAO.delInstitute(ids);
 	}
 	
+	/**
+	 * 根据条件查询
+	 * @param ids 学院ID
+	 * @param name 学院名称
+	 * @return
+	 */
 	public List<Institute> getByCondition(long[] ids, String name){
 		return instituteDAO.getByCondition(ids, name);
 	}

@@ -9,17 +9,13 @@ import org.springframework.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.student.model.Institute;
 import com.student.model.Major;
-import com.student.service.InstituteService;
 import com.student.service.MajorService;
 
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
-import net.paoding.rose.web.annotation.rest.Post;
-import net.paoding.rose.web.var.Model;
 
 @Path("major")
 public class MajorController {
@@ -28,40 +24,30 @@ public class MajorController {
 	@Autowired
 	private MajorService majorService;
 	
-	@Get("getAdd")
-	public String getAdd(){
-		return "institute/add";
-	}
-	
 	@Get("getList")
 	public String getList(){
-		return "majorList";
+		return "major/list";
 	}
 	
 	@Get("add")
-	public String addInstitute(Invocation inv, @Param("name")String name) {
+	public String addInstitute(Invocation inv, @Param("name")String name, @Param("instituteid")long instituteid) {
 		if(StringUtils.isEmpty(name)){
 			return "error";
 		}
-		majorService.add(name);
-		return "home";
+		majorService.add(name,instituteid);
+		return "major/list";
 	}
 	
-	@Post("getAll")
-	public String getAllInstitute(Invocation inv, Model model){
-		List<Major> list = majorService.getAll();
-		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
-		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
-	}
-	
+	@Get("del")
 	public String delInstitute(Invocation inv, @Param("ids")long[] ids){
 		majorService.del(ids);
-		return "";
+		return "major/list";
 	}
 	
 	@Get("getByCondition")
 	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name){
-		majorService.getByCondition(ids,name);
-		return "";
+		List<Major> list = majorService.getByCondition(ids,name);
+		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
+		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
 	}
 }

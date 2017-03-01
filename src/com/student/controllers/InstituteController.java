@@ -16,8 +16,6 @@ import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
-import net.paoding.rose.web.annotation.rest.Post;
-import net.paoding.rose.web.var.Model;
 
 @Path("institute")
 public class InstituteController {
@@ -47,12 +45,12 @@ public class InstituteController {
 			return "error";
 		}
 		instituteService.add(name);
-		return "r:getList";
+		return "institute/list";
 	}
 	
 	@Get("del")
 	public String delInstitute(Invocation inv, @Param("ids")long[] ids){
 		instituteService.del(ids);
-		return "r:getList";
+		return "institute/list";
 	}
 }

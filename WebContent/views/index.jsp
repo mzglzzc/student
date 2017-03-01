@@ -17,25 +17,16 @@
 		<div class="easyui-accordion" data-options="multiple:true" >
 	        <div title="基础信息">
 	            <ul>
-	            	<li><a onclick="addTab('add1','/student/institute/getList')">个人信息</a></li>
+	            	<li><a onclick="addTab('add1','institute/getList')">个人信息</a></li>
 	            </ul>
 	        </div>
 	        <div title="系统管理">
 	            <ul>
-	            	<li><a onclick="addTab('add1','/student/institute/getList')">学院管理</a></li>
-	            	<li><a onclick="addTab('add2','/student/institute/getAll')">专业管理</a></li>
-	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">班级管理</a></li>
-	            	<li><a onclick="addTab('add3','/student/institute/getAdd')">学生管理</a></li>
+	            	<li><a onclick="addTab('学院管理','institute/getList')">学院管理</a></li>
+	            	<li><a onclick="addTab('专业管理','major/getList')">专业管理</a></li>
+	            	<li><a onclick="addTab('班级管理','institute/getAdd')">班级管理</a></li>
+	            	<li><a onclick="addTab('学生管理','institute/getAdd')">学生管理</a></li>
 	            </ul>
-	        </div>
-	        <div title="C#">
-	            <p>C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.</p>
-	        </div>
-	        <div title="Ruby">
-	            <p>A dynamic, reflective, general-purpose object-oriented programming language.</p>
-	        </div>
-	        <div title="Fortran">
-	            <p>Fortran (previously FORTRAN) is a general-purpose, imperative programming language that is especially suited to numeric computation and scientific computing.</p>
 	        </div>
 	    </div>
 	</div>

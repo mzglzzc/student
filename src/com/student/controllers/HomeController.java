@@ -14,12 +14,4 @@ public class HomeController {
 	public String index(Invocation inv) {
 		return "index";
 	}
-	@Get("/stuList")
-	public String test(Invocation inv) {
-		return "stuList";
-	}
-	@Get("/stuAdd")
-	public String test2(Invocation inv) {
-		return "stuAdd";
-	}
 }

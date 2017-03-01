@@ -3,7 +3,6 @@ package com.student.dao;
 import java.util.List;
 
 import com.student.model.Institute;
-import com.student.model.Major;
 
 import net.paoding.rose.jade.annotation.DAO;
 import net.paoding.rose.jade.annotation.ReturnGeneratedKeys;
