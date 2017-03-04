@@ -26,7 +26,7 @@ public class ClasesController {
 	
 	@Get("getList")
 	public String getList(){
-		return "major/list";
+		return "classes/list";
 	}
 	
 	@Get("add")

@@ -19,7 +19,7 @@
     	<i class="icon-cloud" id="cloud2"></i>
 		<h1 id="th1">学生管理系统</h1>
 	</div>
-	<div data-options="region:'west',title:''" style="width:180px;">
+	<div data-options="region:'west',title:'导航'" style="width:180px;">
 		<div class="easyui-accordion leftNav" data-options="multiple:true" >
 	        <div title="基础信息">
 	            <ul>

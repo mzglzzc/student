@@ -43,7 +43,7 @@ public class MajorService {
 	 * @param name 专业名称
 	 * @return
 	 */
-	public List<Major> getByCondition(long[] ids, String name){
-		return majorDAO.getByCondition(ids, name);
+	public List<Major> getByCondition(long[] ids, String name, long instituteid){
+		return majorDAO.getByCondition(ids, name, instituteid);
 	}
 }

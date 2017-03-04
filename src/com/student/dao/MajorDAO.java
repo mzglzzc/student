@@ -44,7 +44,9 @@ public interface MajorDAO {
 			+ "join institute i on m.instituteid=i.id "
 			+ "where 1=1 "
 			+ "#if(:ids!=null&&:ids.size()>0){and m.id in (:ids) } "
-			+ "#if(:name!=null&&:name.length()>0){and m.name like :name } ")
-	public List<Major> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name);
+			+ "#if(:name!=null&&:name.length()>0){and m.name like :name } "
+			+ "#if(:instituteid!=null){and m.instituteid = :instituteid } ")
+	public List<Major> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name, 
+			@SQLParam("instituteid")long instituteid);
 	
 }

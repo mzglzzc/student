@@ -31,8 +31,16 @@
 	</div>
 	<div id="win" class="easyui-window" title="新增" closed="true" style="width:300px;">
 		<form style="padding:10px 20px 10px 40px;" action="add" method="get">
-			<p>所属学院: <input id="cc" class="easyui-combobox" name="instituteid" data-options="valueField:'id',textField:'name',url:'../institute/getByCondition',method:'get'"></p>
-			<p>所属专业: <input id="cc" class="easyui-combobox" name="instituteid" data-options="valueField:'id',textField:'name',url:'../institute/getByCondition',method:'get'"></p>
+			<p>
+				所属学院: 
+				<input id="institute" class="easyui-combobox" name="instituteid" 
+				data-options="valueField:'id',textField:'name',url:'../institute/getByCondition',method:'get',value:'${instituteid}'">
+			</p>
+			<p>
+				所属专业: 
+				<input id="major" class="easyui-combobox" name="instituteid" 
+				data-options="valueField:'id',textField:'name',url:'../major/getByCondition?instituteid=${instituteid}',method:'get'">
+			</p>
 			<p>班级名称: <input name="name" type="text"></p>
 			<div style="padding:5px;text-align:center;">
 				<button type="submit" class="easyui-linkbutton" icon="icon-ok">确定</button>

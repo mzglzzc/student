@@ -45,8 +45,9 @@ public class MajorController {
 	}
 	
 	@Get("getByCondition")
-	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name){
-		List<Major> list = majorService.getByCondition(ids,name);
+	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name, 
+			@Param("instituteid")long instituteid){
+		List<Major> list = majorService.getByCondition(ids,name,instituteid);
 		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
 		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
 	}
