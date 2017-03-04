@@ -41,14 +41,13 @@
 	       
 	    </div>
 	</div>
-    <script type="text/javascript" src="/student/static/jquery-easyui-1.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/student/static/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+	<%@include file="/views/include/comjs.jsp"%>
     <script>
     	function addTab(title, url){
     		if ($('#tab1').tabs('exists', title)){
     			$('#tab1').tabs('select', title);
     		} else {
-    			var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;min-height:300px;"></iframe>';
+    			var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" class="tabWrap"></iframe>';
     			$('#tab1').tabs('add',{
     				title:title,
     				content:content,
