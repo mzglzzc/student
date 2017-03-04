@@ -12,13 +12,39 @@ import com.student.model.Classes;
 public class ClassesService {
 	@Autowired
 	private ClassesDAO classesDAO;
-	
+
 	/**
-	 * 获取全部班级
+	 * 增
+	 * @param cla
 	 * @return
 	 */
-	public List<Classes> getAll(){
-		return classesDAO.getAll();
+	public long add(String name, long majorid){
+		return classesDAO.add(name, majorid);
 	}
 	
+	/**
+	 * 删
+	 * @param ids
+	 */
+	public void del(long[] ids){
+		classesDAO.del(ids);
+	}
+	
+	/**
+	 * 改
+	 * @param cla
+	 */
+	public void update(Classes cla){
+		classesDAO.update(cla);
+	}
+	
+	/**
+	 * 查
+	 * @param ids
+	 * @param name
+	 * @return
+	 */
+	public List<Classes> getByCondition(long[] ids, String name){
+		return classesDAO.getByCondition(ids, name);
+	}
 }

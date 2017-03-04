@@ -20,32 +20,29 @@ public interface ClassesDAO {
 	 * @return
 	 */
 	@ReturnGeneratedKeys
-	@SQL("insert into classes(name,instituteid) values(:cla.name,:cla.instituteid)")
-	public long addClasses(@SQLParam("cla") Classes cla);
+	@SQL("insert into classes(name,majorid) values(:name,:majorid)")
+	public long add(@SQLParam("name")String name, @SQLParam("majorid")long majorid);
 	/**
 	 * 删除班级
 	 * @param id 班级ID
 	 */
-	@SQL("delete from classes where id=:id")
-	public void delClasses(@SQLParam("id") long id);
+	@SQL("delete from classes where id in (:ids)")
+	public void del(@SQLParam("ids") long[] ids);
 	/**
 	 * 根据班级ID更新班级信息
 	 * @param cla 班级对象
 	 * @return
 	 */
-	@SQL("update classes set name=:cla.name,instituteid=:cla.instituteid "
+	@SQL("update classes set name=:cla.name,majorid=:cla.majorid "
 			+ "where id=:ins.id")
-	public long updClasses(@SQLParam("cla") Classes cla);
+	public long update(@SQLParam("cla") Classes cla);
 	/**
 	 * 获取全部班级
 	 * @return
 	 */
-	@SQL("select id,name,instituteid,ctime from classes order by id desc")
-	public List<Classes> getAll();
-	/**
-	 * 获取全部班级的总数
-	 * @return
-	 */
-	@SQL("select count(id) from classes")
-	public int getAllCount();
+	@SQL("select id,name,majorid,ctime from classes c "
+			+ "where 1=1 "
+			+ "#if(:ids!=null&&:ids.size()>0){and m.id in (:ids) } "
+			+ "#if(:name!=null&&:name.length()>0){and m.name like :name } ")
+	public List<Classes> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name);
 }

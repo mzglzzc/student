@@ -19,8 +19,8 @@
     	<i class="icon-cloud" id="cloud2"></i>
 		<h1 id="th1">学生管理系统</h1>
 	</div>
-	<div data-options="region:'west',title:'Navigator'" style="width:180px;">
-		<div class="easyui-accordion" data-options="multiple:true" >
+	<div data-options="region:'west',title:''" style="width:180px;">
+		<div class="easyui-accordion leftNav" data-options="multiple:true" >
 	        <div title="基础信息">
 	            <ul>
 	            	<li><a onclick="addTab('add1','institute/getList')">个人信息</a></li>
@@ -30,8 +30,8 @@
 	            <ul>
 	            	<li><a onclick="addTab('学院管理','institute/getList')">学院管理</a></li>
 	            	<li><a onclick="addTab('专业管理','major/getList')">专业管理</a></li>
-	            	<li><a onclick="addTab('班级管理','institute/getAdd')">班级管理</a></li>
-	            	<li><a onclick="addTab('学生管理','institute/getAdd')">学生管理</a></li>
+	            	<li><a onclick="addTab('班级管理','classes/getList')">班级管理</a></li>
+	            	<li><a onclick="addTab('学生管理','student/getList')">学生管理</a></li>
 	            </ul>
 	        </div>
 	    </div>

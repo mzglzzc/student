@@ -30,6 +30,14 @@ public class MajorService {
 	}
 	
 	/**
+	 * 修改
+	 * @param major
+	 */
+	public void update(Major major){
+		majorDAO.update(major);
+	}
+	
+	/**
 	 * 跟据条件查询专业
 	 * @param ids 专业ID
 	 * @param name 专业名称

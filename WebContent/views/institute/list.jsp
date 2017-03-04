@@ -7,7 +7,7 @@
 <%@include file="/views/include/common.jsp"%>
 </head>
 <body>
-	<table id="tt" class="easyui-datagrid" style="" iconCls="icon-save" 
+	<table id="tt" class="easyui-datagrid" style="" iconCls="icon-save" fit="true" 
 		toolbar="#tb" url="/student/institute/getByCondition" pagination="true" rownumbers="true" method="get">
 		<thead>
 			<tr>
