@@ -40,9 +40,12 @@ public interface ClassesDAO {
 	 * 获取全部班级
 	 * @return
 	 */
-	@SQL("select id,name,majorid,ctime from classes c "
+	@SQL("select c.id,c.name,c.majorid,m.name as majorName,c.ctime from classes c "
+			+ "join major m on c.majorid=m.id "
 			+ "where 1=1 "
-			+ "#if(:ids!=null&&:ids.size()>0){and m.id in (:ids) } "
-			+ "#if(:name!=null&&:name.length()>0){and m.name like :name } ")
-	public List<Classes> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name);
+			+ "#if(:ids!=null&&:ids.size()>0){and c.id in (:ids) } "
+			+ "#if(:name!=null&&:name.length()>0){and c.name like :name } "
+			+ "#if(:majorid!=null){and c.majorid = :majorid } ")
+	public List<Classes> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name, 
+			@SQLParam("majorid")long majorid);
 }

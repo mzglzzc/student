@@ -26,12 +26,18 @@
 	            	<li><a onclick="addTab('add1','institute/getList')">个人信息</a></li>
 	            </ul>
 	        </div>
+	        <div title="信息统计">
+	            <ul>
+	            	<li><a onclick="addTab('add1','institute/getList')">学生统计</a></li>
+	            </ul>
+	        </div>
 	        <div title="系统管理">
 	            <ul>
 	            	<li><a onclick="addTab('学院管理','institute/getList')">学院管理</a></li>
 	            	<li><a onclick="addTab('专业管理','major/getList')">专业管理</a></li>
 	            	<li><a onclick="addTab('班级管理','classes/getList')">班级管理</a></li>
 	            	<li><a onclick="addTab('学生管理','student/getList')">学生管理</a></li>
+	            	<li><a onclick="addTab('日志管理','log/getList')">日志管理</a></li>
 	            </ul>
 	        </div>
 	    </div>

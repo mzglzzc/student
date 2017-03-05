@@ -23,6 +23,10 @@ public class Classes implements Serializable {
 	 */
 	private long majorid;
 	/**
+	 * 专业名称
+	 */
+	private String majorName;
+	/**
 	 * 创建时间
 	 */
 	private Date ctime;
@@ -44,6 +48,12 @@ public class Classes implements Serializable {
 	}
 	public void setMajorid(long majorid) {
 		this.majorid = majorid;
+	}
+	public String getMajorName() {
+		return majorName;
+	}
+	public void setMajorName(String majorName) {
+		this.majorName = majorName;
 	}
 	public Date getCtime() {
 		return ctime;

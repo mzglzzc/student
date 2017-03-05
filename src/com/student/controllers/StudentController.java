@@ -9,44 +9,44 @@ import org.springframework.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.student.model.Classes;
-import com.student.service.ClassesService;
+import com.student.model.Student;
+import com.student.service.StudentService;
 
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
 
-@Path("classes")
-public class ClasesController {
-	final static Logger logger = Logger.getLogger(ClasesController.class.getName());
+@Path("student")
+public class StudentController {
+	final static Logger logger = Logger.getLogger(StudentController.class.getName());
 	
 	@Autowired
-	private ClassesService classesService;
+	private StudentService studentService;
 	
 	@Get("getList")
 	public String getList(){
-		return "classes/list";
+		return "student/list";
 	}
 	
 	@Get("add")
-	public String addInstitute(Invocation inv, @Param("name")String name, @Param("majorid")long majorid) {
-		if(StringUtils.isEmpty(name)){
+	public String addInstitute(Invocation inv, @Param("stu")Student stu) {
+		if(stu == null){
 			return "error";
 		}
-		classesService.add(name, majorid);
-		return "classes/list";
+		studentService.add(stu);
+		return "student/list";
 	}
 	
 	@Get("del")
 	public String delInstitute(Invocation inv, @Param("ids")long[] ids){
-		classesService.del(ids);
-		return "classes/list";
+		studentService.del(ids);
+		return "student/list";
 	}
 	
 	@Get("getByCondition")
 	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name){
-		List<Classes> list = classesService.getByCondition(ids,name);
+		List<Student> list = studentService.getByCondition(ids,name);
 		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
 		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
 	}

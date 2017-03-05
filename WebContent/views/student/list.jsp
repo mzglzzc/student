@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>班级管理</title>
+<title>学生管理</title>
 <%@include file="/views/include/common.jsp"%>
 </head>
 <body>
@@ -12,8 +12,8 @@
 		<thead>
 			<tr>
 				<th field="id">ID</th>
-				<th field="name">班级名称</th>
-				<th field="majorName">所属专业</th>
+				<th field="name">姓名</th>
+				<th field="classesName">所属班级</th>
 				<th field="ctime">创建时间</th>
 			</tr>
 		</thead>
@@ -33,14 +33,21 @@
 		<form style="padding:10px 20px 10px 40px;" action="add" method="get">
 			<p>
 				所属学院: 
-				<input id="institute" class="easyui-combobox" name="instituteid" value="--请选择--">
+				<input id="institute" class="easyui-combobox" name="instituteid" value="--请选择--" required="true"
+					editable="false">
 			</p>
 			<p>
 				所属专业: 
-				<input id="major" class="easyui-combobox" name="majorid" 
-				data-options="valueField:'id',textField:'name',url:'../major/getByCondition?instituteid=${instituteid}',method:'get'">
+				<input id="major" class="easyui-combobox" name="majorid" value="--请选择--" panelHeight="auto" required="true"
+					editable="false">
 			</p>
-			<p>班级名称: <input name="name" type="text"></p>
+			<p>
+				所属班级: 
+				<input id="classes" class="easyui-combobox" name="stu.classesid" value="--请选择--" panelHeight="auto" required="true"
+					editable="false">
+			</p>
+			<p>姓名: <input name="stu.name" type="text"></p>
+			<p>密码: <input name="stu.password" type="password"></p>
 			<div style="padding:5px;text-align:center;">
 				<button type="submit" class="easyui-linkbutton" icon="icon-ok">确定</button>
 				<a id="cancelBtn" href="#" class="easyui-linkbutton" icon="icon-cancel">取消</a>
@@ -70,17 +77,30 @@
 		    method:'get',
 		    panelHeight:'auto',
 		    required:true,
-		    editable:true,//不可编辑，只能选择
+		    editable:false,//不可编辑，只能选择
 		    value:'--请选择--',
 		    onChange:function(instituteid){
 		    	$('#major').combobox({
 				    valueField:'id', //值字段
 				    textField:'name', //显示的字段
 				    url:'../major/getByCondition?instituteid='+instituteid,
+				    method:'get',
 				    panelHeight:'auto',
 				    required:true,
-				    editable:true,//不可编辑，只能选择
-				    value:'--请选择--'
+				    editable:false,//不可编辑，只能选择
+				    value:'--请选择--',
+				    onChange:function(majorid){
+				    	$('#classes').combobox({
+						    valueField:'id', //值字段
+						    textField:'name', //显示的字段
+						    url:'../classes/getByCondition?majorid='+majorid,
+						    method:'get',
+						    panelHeight:'auto',
+						    required:true,
+						    editable:false,//不可编辑，只能选择
+						    value:'--请选择--'
+					 	});
+				    }
 			 	});
 		    }
 		 });

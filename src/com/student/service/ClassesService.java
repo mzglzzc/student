@@ -44,7 +44,7 @@ public class ClassesService {
 	 * @param name
 	 * @return
 	 */
-	public List<Classes> getByCondition(long[] ids, String name){
-		return classesDAO.getByCondition(ids, name);
+	public List<Classes> getByCondition(long[] ids, String name, long majorid){
+		return classesDAO.getByCondition(ids, name, majorid);
 	}
 }

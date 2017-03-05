@@ -55,6 +55,10 @@ public class Student implements Serializable {
 	 */
 	private long classesid;
 	/**
+	 * 班级名称
+	 */
+	private String classesName;
+	/**
 	 * 创建时间
 	 */
 	private Date ctime;
@@ -125,10 +129,23 @@ public class Student implements Serializable {
 	public void setClassesid(long classesid) {
 		this.classesid = classesid;
 	}
+	public String getClassesName() {
+		return classesName;
+	}
+	public void setClassesName(String classesName) {
+		this.classesName = classesName;
+	}
 	public Date getCtime() {
 		return ctime;
 	}
 	public void setCtime(Date ctime) {
 		this.ctime = ctime;
+	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", uid=" + uid + ", password=" + password + ", name=" + name + ", sex=" + sex
+				+ ", birthday=" + birthday + ", idcard=" + idcard + ", tel=" + tel + ", address=" + address
+				+ ", entry_time=" + entry_time + ", classesid=" + classesid + ", classesName=" + classesName
+				+ ", ctime=" + ctime + "]";
 	}
 }
