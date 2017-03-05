@@ -40,6 +40,15 @@ public class StudentService {
 	
 	/**
 	 * 查
+	 * @param name
+	 * @return
+	 */
+	public Student getByName(String name){
+		return studentDAO.getByName(name);
+	}
+	
+	/**
+	 * 查
 	 * @param ids
 	 * @param name
 	 * @return

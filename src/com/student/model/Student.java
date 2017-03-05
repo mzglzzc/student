@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 学生
  */
-public class Student implements Serializable {
+public class Student extends User implements Serializable{
 
 	private static final long serialVersionUID = -4492412758881190961L;
 	

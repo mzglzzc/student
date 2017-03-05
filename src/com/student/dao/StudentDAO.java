@@ -47,6 +47,11 @@ public interface StudentDAO {
 	@SQL("select s.id,s.uid,DECODE(s.password,'"+Constants.MYSQL_KEY+"') as password,s.name,s.classesid,c.name as classesName,s.ctime "
 			+ "from student s "
 			+ "join classes c on s.classesid=c.id "
+			+ "where s.name = :name")
+	public Student getByName(@SQLParam("name")String name);
+	@SQL("select s.id,s.uid,DECODE(s.password,'"+Constants.MYSQL_KEY+"') as password,s.name,s.classesid,c.name as classesName,s.ctime "
+			+ "from student s "
+			+ "join classes c on s.classesid=c.id "
 			+ "where 1=1 "
 			+ "#if(:ids!=null&&:ids.size()>0){and s.id in (:ids) } "
 			+ "#if(:name!=null&&:name.length()>0){and s.name like :name } ")
