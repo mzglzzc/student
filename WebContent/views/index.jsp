@@ -15,6 +15,7 @@
 </head>
 <body class="easyui-layout">
     <div region="north" style="height:160px;" class="hback">
+		<a href="logout" style="float:right;font-size:20px;">退出</a>
     	<i class="icon-cloud" id="cloud1"></i>
     	<i class="icon-cloud" id="cloud2"></i>
 		<h1 id="th1">学生管理系统</h1>

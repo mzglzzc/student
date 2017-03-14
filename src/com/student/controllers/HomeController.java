@@ -1,5 +1,7 @@
 package com.student.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.student.model.User;
 import com.student.service.StudentService;
 import com.student.util.Constants;
+import com.sun.glass.ui.Application;
 
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
@@ -55,10 +58,25 @@ public class HomeController {
 			request.setAttribute("name", name);
 			return "a:/";
 		} else {
+			/*List<HttpSession> sessions = session.getAttribute("");
+			for(int i=0; i<sessions.size(); i++){
+				HttpSession ses = sessions.get(i);
+				User usr = (User)ses.getAttribute("user");
+				if(usr!=null && usr.getName().equals(user.getName())){
+					sessions.remove(i);
+					break;
+				}
+			}*/
 			user.setIsTeacher(false);
 			session.setAttribute("user", user);
 			session.setMaxInactiveInterval(Constants.SESSION_OVER_TIME);
 			return "r:home";
 		}
+	}
+	
+	@Get("logout")
+	public String logout(Invocation inv){
+		inv.getRequest().getSession().invalidate();
+		return "login";
 	}
 }
