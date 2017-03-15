@@ -1,7 +1,9 @@
 package com.student.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,12 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.student.model.User;
 import com.student.service.StudentService;
 import com.student.util.Constants;
-import com.sun.glass.ui.Application;
 
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
+import net.paoding.rose.web.annotation.rest.Post;
 
 @Path("")
 public class HomeController {
@@ -25,8 +27,8 @@ public class HomeController {
 	private StudentService studentService;
 	
 	@Get("")
-	public String index(Invocation inv) {
-		return "login";
+	public String indexGet(Invocation inv) {
+		return "r:home";
 	}
 	
 	@LoginCheckRequired
@@ -35,11 +37,11 @@ public class HomeController {
 		return "index";
 	}
 
-	@Get("/login")
+	@Post("login")
 	public String login(Invocation inv, @Param("identity")short identity, @Param("name")String name,
 			@Param("password")String password) {
 		if(name==null || name.length()<=0 || password==null || password.length()<=0){
-			return "a:/";
+			return "login";
 		}
 		HttpServletRequest request = inv.getRequest();
 		HttpSession session = request.getSession();
@@ -52,31 +54,41 @@ public class HomeController {
 		if(user==null){
 			request.setAttribute("message", "账号不存在");
 			request.setAttribute("name", name);
-			return "a:/";
+			return "login";
 		} else if(!user.getPassword().equals(password)){
 			request.setAttribute("message", "账号或密码错误");
 			request.setAttribute("name", name);
-			return "a:/";
+			return "login";
 		} else {
-			/*List<HttpSession> sessions = session.getAttribute("");
+			ServletContext application = inv.getServletContext();
+			@SuppressWarnings("unchecked")
+			List<HttpSession> sessions = (List<HttpSession>)application.getAttribute("sessionlist");
+			if(sessions==null || sessions.size()<=0){
+				sessions = new ArrayList<HttpSession>();
+			}
 			for(int i=0; i<sessions.size(); i++){
 				HttpSession ses = sessions.get(i);
 				User usr = (User)ses.getAttribute("user");
 				if(usr!=null && usr.getName().equals(user.getName())){
-					sessions.remove(i);
+					ses.removeAttribute("user");
+					sessions.remove(ses);
 					break;
 				}
-			}*/
+			}
 			user.setIsTeacher(false);
 			session.setAttribute("user", user);
 			session.setMaxInactiveInterval(Constants.SESSION_OVER_TIME);
+			sessions.add(session);
+			application.setAttribute("sessionlist", sessions);
 			return "r:home";
 		}
 	}
 	
 	@Get("logout")
 	public String logout(Invocation inv){
-		inv.getRequest().getSession().invalidate();
+		HttpServletRequest request = inv.getRequest();
+		request.getSession().removeAttribute("user");
+		request.setAttribute("message", "已退出");
 		return "login";
 	}
 }

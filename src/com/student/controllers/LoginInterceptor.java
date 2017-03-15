@@ -28,7 +28,7 @@ public class LoginInterceptor extends ControllerInterceptorAdapter {
     	HttpServletRequest request = inv.getRequest();
 		User user = (User)request.getSession().getAttribute("user");
 		if(user==null){
-			return "redirect:login";
+			return "login";
 		} else {
 			return true;
 		}

@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div class="lwrap">
-		<form class="lform" action="login" method="get">
+		<form class="lform" action="login" method="post">
 			<h1 class="lh1"><i class="icon-user"></i>&nbsp;登录</h1>
 			<table class="ltable">
 				<tr>
