@@ -24,12 +24,12 @@
 		<div class="easyui-accordion leftNav" data-options="multiple:true" >
 	        <div title="基础信息">
 	            <ul>
-	            	<li><a onclick="addTab('add1','institute/getList')">个人信息</a></li>
+	            	<li><a onclick="addTab('个人中心','userInfo')">个人中心</a></li>
 	            </ul>
 	        </div>
 	        <div title="信息统计">
 	            <ul>
-	            	<li><a onclick="addTab('add1','institute/getList')">学生统计</a></li>
+	            	<li><a onclick="addTab('学生统计','institute/getList')">学生统计</a></li>
 	            </ul>
 	        </div>
 	        <div title="系统管理">
@@ -44,17 +44,15 @@
 	    </div>
 	</div>
 	<div id="content" region="center">
-		<div class="easyui-tabs" plain="true" id="tab1">
-	       
-	    </div>
+		<div class="easyui-tabs" plain="true" id="tab1"></div>
 	</div>
 	<%@include file="/views/include/comjs.jsp"%>
-    <script>
+    <script type="text/javascript">
     	function addTab(title, url){
     		if ($('#tab1').tabs('exists', title)){
     			$('#tab1').tabs('select', title);
     		} else {
-    			var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" class="tabWrap"></iframe>';
+    			var content = '<iframe scrolling="auto" frameborder="0" src="'+url+'" class="tabWrap"></iframe>';
     			$('#tab1').tabs('add',{
     				title:title,
     				content:content,
@@ -62,6 +60,9 @@
     			});
     		}
     	}
+    	$(function(){
+    		addTab('个人中心','userInfo');
+    	});
     </script>
 </body>
 </html>

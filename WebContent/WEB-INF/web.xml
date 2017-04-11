@@ -33,4 +33,8 @@
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>INCLUDE</dispatcher>
     </filter-mapping> 
+    
+    <session-config>
+      <session-timeout>30</session-timeout>
+	</session-config>
 </web-app>

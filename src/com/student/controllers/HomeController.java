@@ -1,7 +1,11 @@
 package com.student.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.student.model.User;
 import com.student.service.StudentService;
 import com.student.util.Constants;
@@ -44,7 +50,7 @@ public class HomeController {
 			return "login";
 		}
 		HttpServletRequest request = inv.getRequest();
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		User user = null;
 		if(identity==1){
 			
@@ -68,14 +74,19 @@ public class HomeController {
 			}
 			for(int i=0; i<sessions.size(); i++){
 				HttpSession ses = sessions.get(i);
-				User usr = (User)ses.getAttribute("user");
-				if(usr!=null && usr.getName().equals(user.getName())){
-					ses.removeAttribute("user");
-					sessions.remove(ses);
-					break;
+				try{
+					User usr = (User)ses.getAttribute("user");
+					if(usr!=null && usr.getName().equals(user.getName())){
+						ses.removeAttribute("user");
+						break;
+					}
+				} catch(Exception e){
+					sessions.remove(i);
+					i--;
+					continue;
 				}
 			}
-			user.setIsTeacher(false);
+			user.setTeacher(false);
 			session.setAttribute("user", user);
 			session.setMaxInactiveInterval(Constants.SESSION_OVER_TIME);
 			sessions.add(session);
@@ -90,5 +101,35 @@ public class HomeController {
 		request.getSession().removeAttribute("user");
 		request.setAttribute("message", "已退出");
 		return "login";
+	}
+
+	@LoginCheckRequired
+	@Get("userInfo")
+	public String userInfo(Invocation inv){
+		return "userInfo";
+	}
+
+	@LoginCheckRequired
+	@Get("getUserInfo")
+	public String getUserInfo(Invocation inv){
+		User user = (User)inv.getRequest().getSession().getAttribute("user");
+		Map<String,Object> map = user.toMap();
+		Set<String> set = map.keySet();
+		JSONArray jsonArr = new JSONArray();
+		int i = 0;
+		for(String str : set){
+			JSONObject temp = new JSONObject();
+			temp.put("name", str);
+			temp.put("value", map.get(str));
+			temp.put("group", i<=3?"基本信息":"扩展信息");
+//			temp.put("editor", "text");
+			jsonArr.add(temp);
+			i++;
+		}
+		
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("total", map.size());
+		jsonObj.put("rows", jsonArr);
+		return "@" + jsonObj.toJSONString();
 	}
 }
