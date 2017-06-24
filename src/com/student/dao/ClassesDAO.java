@@ -45,7 +45,7 @@ public interface ClassesDAO {
 			+ "where 1=1 "
 			+ "#if(:ids!=null&&:ids.size()>0){and c.id in (:ids) } "
 			+ "#if(:name!=null&&:name.length()>0){and c.name like :name } "
-			+ "#if(:majorid!=null){and c.majorid = :majorid } ")
+			+ "#if(:majorid!=null&&:majorid!=0){and c.majorid = :majorid } ")
 	public List<Classes> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name, 
 			@SQLParam("majorid")long majorid);
 }

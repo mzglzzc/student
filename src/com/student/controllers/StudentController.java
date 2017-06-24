@@ -44,8 +44,11 @@ public class StudentController {
 	}
 	
 	@Get("getByCondition")
-	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name){
-		List<Student> list = studentService.getByCondition(ids,name);
+	public String getByCondition(Invocation inv, @Param("ids")long[] ids, @Param("name")String name, 
+			@Param("page")int page, @Param("rows")int rows){
+		if(page==0) page = 1;
+		if(rows==0) rows = 10;
+		List<Student> list = studentService.getByCondition(ids,name,(page-1)*rows,rows);
 		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
 		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
 	}

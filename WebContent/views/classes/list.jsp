@@ -33,12 +33,11 @@
 		<form style="padding:10px 20px 10px 40px;" action="add" method="get">
 			<p>
 				所属学院: 
-				<input id="institute" class="easyui-combobox" name="instituteid" value="--请选择--">
+				<input id="institute" class="easyui-combobox" name="instituteid" value="--请选择--" required="true" editable="false">
 			</p>
 			<p>
 				所属专业: 
-				<input id="major" class="easyui-combobox" name="majorid" 
-				data-options="valueField:'id',textField:'name',url:'../major/getByCondition?instituteid=${instituteid}',method:'get'">
+				<input id="major" class="easyui-combobox" name="majorid" value="--请选择--" panelHeight="auto" required="true" editable="false">
 			</p>
 			<p>班级名称: <input name="name" type="text"></p>
 			<div style="padding:5px;text-align:center;">
@@ -70,16 +69,17 @@
 		    method:'get',
 		    panelHeight:'auto',
 		    required:true,
-		    editable:true,//不可编辑，只能选择
+		    editable:false,//不可编辑，只能选择
 		    value:'--请选择--',
 		    onChange:function(instituteid){
 		    	$('#major').combobox({
 				    valueField:'id', //值字段
 				    textField:'name', //显示的字段
 				    url:'../major/getByCondition?instituteid='+instituteid,
+				    method:'get',
 				    panelHeight:'auto',
 				    required:true,
-				    editable:true,//不可编辑，只能选择
+				    editable:false,//不可编辑，只能选择
 				    value:'--请选择--'
 			 	});
 		    }

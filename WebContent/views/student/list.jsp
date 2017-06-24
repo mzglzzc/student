@@ -23,7 +23,7 @@
 		<div style="display:inline-block">
 			<span>ID:</span>
 			<input id="id" name="id" style="line-height:26px;border:1px solid #ccc">
-			<span>班级名称:</span>
+			<span>学生姓名:</span>
 			<input id="searchname" name="searchname" style="line-height:26px;border:1px solid #ccc">
 			<a class="easyui-linkbutton" plain="true" onclick="doSearch()">搜索</a>
 		</div>

@@ -53,7 +53,7 @@ public class StudentService {
 	 * @param name
 	 * @return
 	 */
-	public List<Student> getByCondition(long[] ids, String name){
-		return studentDAO.getByCondition(ids, name);
+	public List<Student> getByCondition(long[] ids, String name, int start, int size){
+		return studentDAO.getByCondition(ids, name, start, size);
 	}
 }
