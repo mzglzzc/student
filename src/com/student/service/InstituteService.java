@@ -17,8 +17,8 @@ public class InstituteService {
 	 * 新增学院
 	 * @return
 	 */
-	public long add(String name){
-		return instituteDAO.addInstitute(name);
+	public long add(Institute ins){
+		return instituteDAO.addInstitute(ins);
 	}
 	
 	/**
@@ -38,12 +38,43 @@ public class InstituteService {
 	}
 	
 	/**
+	 * 根据名称查询
+	 * @param name
+	 * @return
+	 */
+	public List<Institute> getByName(String name){
+		return instituteDAO.getByName(name);
+	}
+	
+	/**
 	 * 根据条件查询
 	 * @param ids 学院ID
 	 * @param name 学院名称
 	 * @return
 	 */
-	public List<Institute> getByCondition(long[] ids, String name){
-		return instituteDAO.getByCondition(ids, name);
+	public List<Institute> getByCondition(long[] ids, String name, String insno, int start, int size){
+		return instituteDAO.getByCondition(ids, name, insno, start, size);
 	}
+	
+	/**
+	 * 查询指定条件的记录总数
+	 * @param ids
+	 * @param name
+	 * @param insno
+	 * @return
+	 */
+	public int getTotalCount(long[] ids, String name, String insno){
+		return instituteDAO.getTotalCount(ids, name, insno);
+	}
+
+	/**
+	 * 根据名称或编号查询
+	 * @param name
+	 * @param uid
+	 * @return
+	 */
+	public List<Institute> checkNameAndUid(String name, String insno){
+		return instituteDAO.checkNameAndUid(name, insno);
+	}
+	
 }

@@ -56,4 +56,7 @@ public class StudentService {
 	public List<Student> getByCondition(long[] ids, String name, int start, int size){
 		return studentDAO.getByCondition(ids, name, start, size);
 	}
+	public int getTotalCount(long[] ids, String name){
+		return studentDAO.getTotalCount(ids, name);
+	}
 }

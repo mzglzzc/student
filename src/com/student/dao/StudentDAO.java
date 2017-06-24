@@ -57,4 +57,12 @@ public interface StudentDAO {
 			+ "#if(:name!=null&&:name.length()>0){and s.name like :name } "
 			+ "limit :start,:size")
 	public List<Student> getByCondition(@SQLParam("ids")long[] ids, @SQLParam("name")String name, @SQLParam("start")int start, @SQLParam("size")int size);
+	@SQL("select count(s.id) "
+			+ "from student s "
+			+ "join classes c on s.classesid=c.id "
+			+ "where 1=1 "
+			+ "#if(:ids!=null&&:ids.size()>0){and s.id in (:ids) } "
+			+ "#if(:name!=null&&:name.length()>0){and s.name like :name } ")
+	public int getTotalCount(@SQLParam("ids")long[] ids, @SQLParam("name")String name);
+	
 }

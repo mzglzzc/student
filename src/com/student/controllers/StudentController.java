@@ -1,12 +1,14 @@
 package com.student.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.student.model.Student;
 import com.student.service.StudentService;
@@ -49,7 +51,11 @@ public class StudentController {
 		if(page==0) page = 1;
 		if(rows==0) rows = 10;
 		List<Student> list = studentService.getByCondition(ids,name,(page-1)*rows,rows);
+		int total = studentService.getTotalCount(ids, name);
+		Map<String,Object> jsonMap = new HashMap<String,Object>();
+		jsonMap.put("total", total);
+		jsonMap.put("rows", list);
 		JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd";
-		return "@"+JSONArray.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
+		return "@"+JSONObject.toJSONString(jsonMap, SerializerFeature.WriteDateUseDateFormat);
 	}
 }

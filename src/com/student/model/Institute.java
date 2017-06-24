@@ -7,13 +7,15 @@ import java.util.Date;
  * 学院
  */
 public class Institute implements Serializable {
-
-	private static final long serialVersionUID = 7964730623128491383L;
-	
+	private static final long serialVersionUID = -7048676587657229379L;
 	/**
 	 * 主键ID
 	 */
 	private long id;
+	/**
+	 * 学院编号
+	 */
+	private String insno;
 	/**
 	 * 学院名称
 	 */
@@ -28,6 +30,12 @@ public class Institute implements Serializable {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public String getInsno() {
+		return insno;
+	}
+	public void setInsno(String insno) {
+		this.insno = insno;
 	}
 	public String getName() {
 		return name;
